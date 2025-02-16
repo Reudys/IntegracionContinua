@@ -20,6 +20,17 @@ jobs:
         with:
           node-version: "16"
 
-      - run: npm install
+      - name: Instalar dependencias
+        run: npm install
 
-      - run: npm test
+      - name: Verificar instalación
+        run: ls -la node_modules
+
+      - name: Verificar jest instalado
+        run: ls -la node_modules/.bin/
+
+      - name: Ejecutar pruebas con npx
+        run: npx jest
+
+      - name: Ejecutar pruebas con npm test (si npx no funciona)
+        run: npm test

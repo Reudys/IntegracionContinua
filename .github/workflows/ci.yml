@@ -15,22 +15,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Verificar versión de Node.js
+        run: node -v
+
       - name: Instalar Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "16"
 
-      - name: Instalar dependencias
-        run: npm install
+      - name: Instalar dependencias con npm ci
+        run: npm ci
 
-      - name: Verificar instalación
+      - name: Verificar node_modules
         run: ls -la node_modules
 
-      - name: Verificar jest instalado
+      - name: Verificar jest en node_modules/.bin/
         run: ls -la node_modules/.bin/
 
       - name: Ejecutar pruebas con npx
         run: npx jest
-
-      - name: Ejecutar pruebas con npm test (si npx no funciona)
-        run: npm test
